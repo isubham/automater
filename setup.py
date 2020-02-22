@@ -1,22 +1,15 @@
 from distutils.core import setup
-import os
-
-DIRECTORY = os.path.dirname(__file__)
-READ_ME = open(os.path.join(DIRECTORY, "README.md")).read()
-VERSION = open(os.path.join(DIRECTORY, "fscleaner", "VERSION.txt")).read()
 
 setup(
   name = 'fscleaner',
   packages = ['fscleaner'],
-  version = VERSION,
+  version = "0.2",
   license='MIT',
   description = 'file system folder cleaner and file remover',
-  long_description=READ_ME,
-  long_description_content_type="text/markdown",
   author = 'Subham Kumar',
   author_email = 'subhamkumarchandrawansi@gmail.com',
   url = 'https://github.com/isubham/fscleaner.git',
-  download_url = 'https://github.com/isubham/fscleaner/archive/v0.1.tar.gz',
+  download_url = 'https://github.com/isubham/fscleaner/archive/v0.1.1.tar.gz',
   keywords = ['file rename', 'folder rename', 'delte file with types'],
   install_requires=[],
   classifiers=[

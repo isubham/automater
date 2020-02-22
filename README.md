@@ -1,29 +1,45 @@
-## cleaning tool for file systems
+# fscleaner
 
-## dependencies
+a file management utility to reame and delete files and folders
 
-python3 installed
+<a href="https://pypi.org/project/fscleaner/">
+    <img src="https://img.shields.io/badge/pypi-v2.1.0-blue.svg"></a>
 
-#### usage
+<a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-%E2%89%A53.5.3-yellow.svg"></a>
 
-parameters    
+## License
+Copyright © 2020 isubham
+
+Licensed under the MIT License (see ``LICENSE.txt`` for details).
+
+
+## Installing
+
+To install fscleaner
+
+    pip install fscleaner==0.1
+
+## Requirements
+
+- Python ≥3.5.3
+
+## Quick Examples
+
+_parameters_
 
 specify location
 
 -p c:\\some location (use absolute location)
 
-
 removes space in file and folder names with _ or trim spaces
 
--s [_, "" default]
-    
+-s  "" default
     
 removes the specified file types in this sceanario .zip and .VTT
 
 -d .zip .vtt .png
 
-so example command
-
-```bash
-python clean.py -d .vtt -p c:\\ee\ee\\ -s _
-```
+    import fscleaner
+    fs = fscleaner("-s _ -p c:\\ee\ee\\ -d .vtt .zip")
+    fs.activate()

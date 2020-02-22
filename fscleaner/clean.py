@@ -9,10 +9,37 @@ PATHFLAG = "p"
 
 class fsclean:
 
-    def __init__(self, path, space, delete):
-        self.path = path
-        self.space = space
-        self.delete = delete
+    """
+    fsclean constructor
+
+    :arg
+        commands (string) : a string which contains flags
+        -p for providing path
+        -s for providing alternative of space in file names
+        -d for deleting the files with the mentioned types
+
+        we are in c:\\my doc\\the folder\\ and to rename
+        folder names from name [the folder] to [the_folder]
+        and to delete .zip files commands will be
+        -p c:\\my doc\\the folder\\
+        -s _
+        -d .zip
+
+        and we have to provide it in one line separated by a space
+         -p c:\\my doc\\the folder\\ -s _ -d .zip
+
+    :return
+        fsclean object
+    """
+    def __init__(self, commands):
+        command_sets = self.process(commands)
+        self.path = command_sets[PATHFLAG]
+        self.space = command_sets[SPACEFLAG]
+        self.delete = command_sets[DELETEFLAG]
+
+    '''activate() call this method to clean the folder and its files based on your command'''
+    def activate(self):
+        self.clean(self.path)
 
     def processFiles(self, path, fileName):
         if self.delete.__contains__(self.fileExtension(fileName)):
@@ -29,12 +56,9 @@ class fsclean:
 
     def newFormat(self, fileName):
         delimiter = ""
-        if (self.space == "_"):
-            delimiter = "_"
+        if (self.space != ""):
+            delimiter = self.space
         return fileName.replace(" ", delimiter)
-
-    def activate(self):
-        self.clean(self.path)
 
     def clean(self, path):
         file_names = list()
@@ -68,8 +92,7 @@ class fsclean:
         return os.path.join(portion1, portion2)
 
 
-    def process(self):
-        commands = " ".join(sys.argv[1:])
+    def process(self, commands):
         command_sequences = commands.split("-")
         command_sets = {DELETEFLAG: [], SPACEFLAG: "", PATHFLAG: ""}
         for command_sequence in command_sequences:
@@ -83,7 +106,6 @@ class fsclean:
                         command_sets[command] = command_input
                 else:
                     print("unknown option -" + command_sequence[0])
-
-        self.fsclean(command_sets[PATHFLAG], command_sets[SPACEFLAG], command_sets[DELETEFLAG]).activate()
+        return command_sets
 
 

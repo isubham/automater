@@ -18,8 +18,7 @@ Licensed under the MIT License (see ``LICENSE.txt`` for details).
 
 To install fscleaner
 
-    pip install fscleaner==0.1
-
+    pip install fscleaner
 ## Requirements
 
 - Python ≥3.5.3

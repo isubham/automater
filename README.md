@@ -1,6 +1,6 @@
-# fscleaner
+# Automater
 
-a file management utility to reame and delete files and folders
+cross platform automation pipeline of common task in a os
 
 <a href="https://pypi.org/project/fscleaner/">
     <img src="https://img.shields.io/badge/pypi-v2.1.0-blue.svg"></a>
